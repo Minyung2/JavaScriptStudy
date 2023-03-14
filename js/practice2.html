@@ -47,11 +47,11 @@
     <br>
     <script>
         repeat = 3; 
-        for (let i = 0; i < repeat; i++) {
-            for (let j = repeat - 1; j > i; j--) {
+        for (let row = 0; row < repeat; row++) {
+            for (let space = repeat - 1; space > row; space--) {
                 document.write('&nbsp');
             }
-            for (let k = 0; k <= (2*i); k++) {
+            for (let col = 0; col <= (2*row); col++) {
                     document.write('*');
             }
             document.write('<br>');
