@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+
+<body>
+    <!-- 
+        elem.querySelectorAll(css)은 다재다능한 요소 검색 메서드입니다. 이 메서드는 elem의 자식 요소 중 주어진 CSS 선택자에 대응하는 요소 모두를 반환합니다.
+        -->
+
+    <form name="search">
+        <label>Search the site:
+            <input type="text" name="search">
+        </label>
+        <input type="submit" value="Search!">
+    </form>
+
+    <hr>
+
+    <form name="search-person">
+        Search the visitors:
+        <table id="age-table">
+            <tr>
+                <td>Age:</td>
+                <td id="age-list">
+                    <label>
+                        <input type="radio" name="age" value="young">less than 18</label>
+                    <label>
+                        <input type="radio" name="age" value="mature">18-50</label>
+                    <label>
+                        <input type="radio" name="age" value="senior">more than 50</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Additionally:</td>
+                <td>
+                    <input type="text" name="info[0]">
+                    <input type="text" name="info[1]">
+                    <input type="text" name="info[2]">
+                </td>
+            </tr>
+
+        </table>
+
+        <input type="submit" value="Search!">
+    </form>
+    <!-- 테이블과 폼이 있는 문서가 있다고 가정합시다.
+        아래 조건에 맞는 요소는 어떻게 찾을 수 있을까요
+    -->
+
+    <script>
+        //1.id="age-table"인 테이블
+        let idFind = document.querySelector('table[id="age-table"]'); // querySelector로
+        idFind=document.getElementById('age-table')                   // getELement
+        document.write(idFind+"<br>");
+        //2.테이블 내의 label 요소 모두(총 3개)
+        let labelFind = document.querySelectorAll('#age-table label')
+        document.write(labelFind.length+"<br>");
+        let table = document.getElementById('age-table');
+        labelFind = table.getElementsByTagName('label');
+        document.write(labelFind.length+"<br>");
+        //3.테이블 내의 첫 번째 td(Age가 적힌 곳)
+        let tdFind = document.querySelector('td');
+        document.write(tdFind.innerHTML+"<br>");
+        tdFind = table.getElementsByTagName('td')[0];
+        document.write(tdFind.innerHTML+"<br>");
+        //4.name="search"인 form
+        // let nameFind = document.querySelector('[name="search"]');
+        let nameFind = document.querySelector('form[name="search"]');
+        document.write(nameFind.innerHTML+'<br>');
+        nameFind = document.getElementsByName("search")[0];
+        document.write(nameFind.innerHTML+'<br>');
+        // 5.폼의 첫 번째 input
+        // 6.폼의 마지막 input 
+        let inputFind = document.querySelectorAll('form[name="search"] input');
+        document.write(inputFind[0]+'<br>'); 
+        document.write(inputFind[inputFind.length-1]+'<br>'); 
+        // document.write(inputFind[inputFind.length-1].innerHTML+'<br>'); 
+
+        
+
+    </script>
+</body>
+
+</html>
