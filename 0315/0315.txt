@@ -1,0 +1,27 @@
+-고차함수(hiOrderFunc.html)
+
+const points=[50,40,30,10,100,70,10,1,4,5];
+points.sort();
+points 찍어보면 (10) [1, 10, 10, 100, 30, 4, 40, 5, 50, 70] 방식으로 출력 (앞자리 수가 작은 순서대로 sort) -> points.sort(function(a,b){return a-b;}); 재정의 해야 정상적으로 출력
+
+forEach() -> callback
+map() -> callback
+filter() -> predicate : filter 요소 return
+reduce() -> callback(pre,cur)
+some() -> predicate 하나라도 만족? bool
+every() -> predicate 모두 만족? bool
+find() -> predicate ? true 요소 반환
+findIndex() -> predicate ? true 요소의 index 반환
+
+
+-parameter(parameter.html) 기본값 지정, ..., arguments 객체
+
+
+-함수
+즉시 실행 함수 - (funcType.html)
+내부 함수
+재귀 함수
+전역 함수 - (predefinedFunc.html)
+
+-객체(object.html)
+-프로토타입(prototype.html)

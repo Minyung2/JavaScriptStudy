@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 타입(Fucntion type)</title>
+</head>
+
+<body>
+    <script>
+        // 즉시 실행 함수(Immediatly Invoke Function Expression,IIFE) function 앞뒤에 괄호 - 호출 할 필요가 없을시 (특성상 함수 이름도 필요 없어서 안 적는 경우가 많다)
+        // (function name() {
+        (function () {
+            let a = 1, b = 3;
+            document.write(a * b + '<br>');
+        }());
+        // name();
+
+        // 내부 함수
+        function parent(param) {
+            let parentVal = param;
+            function children() {
+                let childVal = 'hong';
+                console.log(parentVal, childVal);
+                document.write(parentVal + childVal + '<br>');
+            }
+            children();
+        }
+        parent('hello. '); // parent 호출 -> parent 안의 children 함수가 정의는 했지만 호출 하지 않았음으로 parent 내에서 children() 호출
+
+        // 재귀 함수
+        function factorial(n) {
+            if (n < 2) return 1;
+            return factorial(n - 1) * n;
+        }
+        document.write(factorial(6));
+
+
+    </script>
+    <br>
+    <button id="btn">버튼 클릭</button>
+    <script>
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click', function () {
+            window.alert('버튼을 눌렀어요.');
+            doSomething();
+        });
+        function doSomething() {
+            let name = '강';
+            setTimeout(function () {
+                window.alert('내 성은 ' + name + '입니다.');
+            }, 1000);
+        };
+    </script>
+
+</body>
+
+</html>
