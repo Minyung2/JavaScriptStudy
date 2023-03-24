@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" , content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <title></title>
+</head>
+
+<body>
+
+    <script>
+        // * 객체에 프로퍼티가 없는 객체에 접근 하려고 하면 에러 발생
+        let user = {};
+        // document.write(user.address.street); // TypeError: Cannot read property 'street' of undefined
+
+        // 프로퍼티 생성 후 실행 됨
+        document.write("user", "<br>");
+        user = { address: { street: "서울" } };
+        document.write(user.address.street, '<br><br>');    // 서울
+
+
+        // * 없는 요소에 접근 하려고 하면 에러 발생
+        // let getNullElement = document.querySelector('.isElement').innerHTML; // Uncaught TypeError: Cannot read properties of null
+        // 요소 생성 후 실행 
+        document.write("element", "<br>");
+        let createEle = document.createElement('p');
+        document.querySelector('body').appendChild(createEle).innerHTML = "element 생성", '<br><br>';
+
+        // * Optional Chaining 이 없었을 때 없는 요소에 접근 하는 방법
+        document.write("user2", "<br>");
+        let user2 = {};
+        document.write(user2 && user2.address && user2.address.street, '<br>'); // undefined
+        // Optional Chaining(?.) 의 등장 후 접근 방법
+        document.write(user2?.address?.street, '<br>');  // undefined => 훨씬 간결해졌다
+        user2 = { address: "서울" };
+        document.write(user2?.address, '<br>');  // 서울
+        document.write(user2?.address?.street, '<br>');  // undefined
+        user2 = { address: { city: "서울", street: "가디역" } };
+        document.write(user2?.address?.city, '<br>');  // 서울
+        document.write(user2?.address?.street, '<br>');  // 가디역
+        document.write(user2?.address?.detail, '<br>');  // undefined
+        document.write(user2.address?.detail, '<br><br>');  // undefined
+        //
+        document.write("user3", "<br>");
+        let user3 = {}; // 주소 정보가 없는 사용자
+        document.write(user3?.address?.street, "<br>"); // undefined, 에러가 발생하지 않습니다.
+        document.write(user3.address?.street, "<br>"); // undefined, 에러가 발생하지 않습니다.
+        document.write(user3?.address, "<br><br>"); // undefined, 에러가 발생하지 않습니다.
+        // document.write(user3?.address.street,"<br>"); // 에러 발생
+        /* 위 예시를 통해 우리는 ?.은 ?. ‘앞’ 평가 대상에만 동작되고, 확장은 되지 않는다는 사실을 알 수 있습니다.(user3?. ->undefined 처리 후 address에서 에러) 
+        * ?. null이나 undefined인 경우만 처리
+        * user가 null이나 undefined가 아니고 실제 값이 존재하는 경우엔 반드시 user.address 프로퍼티는 있어야 합니다. 그렇지 않으면 user?.address.street의 두 번째 점 연산자에서 에러가 발생합니다
+        */
+        document.write('user4<br>');
+        let user4 = { address: { street: "도로명 123" } }
+        document.write(user4.address?.street, '<br>');
+        delete user4.address?.street; // user.address가 존재하면 user.address.street을 삭제합니다.
+        document.write(user4.address?.street,'<br><br>');
+
+        document.write('user5<br>')
+        let user5 = {address : {detail : null}};
+        user5.address.detail = user5.address?.detail??"아무로 123";  // 전에 포스팅한 nullish 병합 함수로 값 부여
+        document.write(user5.address?.detail, '<br><br>');  // 아무로 123
+
+    </script>
+
+</body>
+
+</html>
