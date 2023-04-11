@@ -1,0 +1,4 @@
+<li><a onclick="팡숀('html')" href="#!index">HTML</a></li>
+<li><a onclick="팡숀('css')" href="#!index">CSS</a></li>
+<li><a onclick="팡숀('javascript')" href="#!index">JavaScript</a></li>
+<li><a onclick="팡숀('ajax')" href="#!index">ajax</a></li>
