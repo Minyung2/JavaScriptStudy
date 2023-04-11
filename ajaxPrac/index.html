@@ -37,13 +37,15 @@
     if(location.hash){
       팡숀(location.hash.substr(2));
     }else{
-      fetchPage('welcome');
+      팡숀('welcome');
     }
 
     fetch('list').then(function (response) {
       response.text().then(function (text) {
-        document.querySelector('#navigation').innerHTML = text;
-        console.log(text);
+        let array = [...text.split(",")];
+        let tags='';
+        array.forEach(str=>tags+='<li><a href="#!'+str+'" onclick=팡숀(\''+str+'\')>' +str+'</a></li>');
+        document.querySelector('#navigation').innerHTML=tags;
       })
     });
   </script>
